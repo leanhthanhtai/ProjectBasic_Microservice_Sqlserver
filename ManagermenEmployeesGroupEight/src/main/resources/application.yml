@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: MANAGERMENT-EMPLOYEES-GROUP-EIGHT
+  cloud:
+    config:
+      uri: http://localhost:8888
+  config:
+    import: "optional:configserver:"
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    hostname: localhost
+
+
+resilience4j:
+  retry:
+    instances:
+      # Retry object used in RetryingService.basicExample()
+      basic:
+        maxRetryAttempts: 3
+        waitDuration: 4s
+  ratelimiter:
+    instances:
+
+      # RateLimiter object used in RateLimitingService.basicExample()
+      basicExample:
+        limitForPeriod: 1
+        limitRefreshPeriod: 5s
+        timeoutDuration: 1s
